@@ -36,7 +36,6 @@ const generateResponse = async (chatElement) => {
     }),
   }
 
-  // Send POST request to API, get response and set the reponse as paragraph text
   try {
     const response = await fetch(API_URL, requestOptions);
     const data = await response.json();
@@ -71,7 +70,7 @@ const handleChat = () => {
     chatbox.appendChild(incomingChatLi);
     chatbox.scrollTo(0, chatbox.scrollHeight);
     generateResponse(incomingChatLi);
-  }, 600);
+  }, 1000);
 }
 
 chatInput.addEventListener("input", () => {
@@ -81,8 +80,6 @@ chatInput.addEventListener("input", () => {
 });
 
 chatInput.addEventListener("keydown", (e) => {
-  // If Enter key is pressed without Shift key and the window 
-  // width is greater than 800px, handle the chat
   if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
     e.preventDefault();
     handleChat();
